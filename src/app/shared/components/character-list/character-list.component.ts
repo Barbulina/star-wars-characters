@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import {
   Character,
+  RESULTS_PER_PAGE,
   SwapiResponseObject,
 } from 'src/app/services/swapi/swapi.model';
 import { SwapiService } from 'src/app/services/swapi/swapi.service';
@@ -19,6 +20,7 @@ export class CharacterListComponent implements OnInit, OnDestroy {
   characters: Character[] = [];
   isLoading: boolean = false;
   subscriptions = new Subscription();
+  pageSize: number = RESULTS_PER_PAGE;
 
   constructor(private swapiService: SwapiService) {}
 
@@ -31,6 +33,7 @@ export class CharacterListComponent implements OnInit, OnDestroy {
     this.subscriptions.add(
       this.swapiService.getPeopleList(page).subscribe({
         next: (data: SwapiResponseObject) => {
+          this.currentPage = page;
           this.count = data.count;
           this.next = data.next;
           this.previous = data.previous;

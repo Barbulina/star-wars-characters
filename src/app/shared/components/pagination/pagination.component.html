@@ -1,0 +1,9 @@
+<nav>
+  <button
+    (click)="onSelectPage(page)"
+    *ngFor="let page of pages"
+    [disabled]="page === currentPage"
+  >
+    {{ page }}
+  </button>
+</nav>

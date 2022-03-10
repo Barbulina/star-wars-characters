@@ -23,3 +23,5 @@ export interface Character {
   edited: string;
   url: string;
 }
+
+export const RESULTS_PER_PAGE = 10;

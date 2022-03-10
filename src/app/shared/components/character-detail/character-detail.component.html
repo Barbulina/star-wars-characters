@@ -1,0 +1,6 @@
+<a (click)="goBack()">back</a>
+<h2>{{ character?.name }}</h2>
+<h4>films</h4>
+<ul>
+  <li *ngFor="let film of character?.films">{{ film }}</li>
+</ul>

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { CharacterListComponent } from './shared/components/character-list/character-list.component';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 import { PaginationComponent } from './shared/components/pagination/pagination.component';
+import { CharacterDetailComponent } from './shared/components/character-detail/character-detail.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { PaginationComponent } from './shared/components/pagination/pagination.c
     CharacterListComponent,
     PageNotFoundComponent,
     PaginationComponent,
+    CharacterDetailComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

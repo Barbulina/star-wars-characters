@@ -1,5 +1,6 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { of, throwError } from 'rxjs';
 import { dataMock } from 'src/app/services/swapi/dataMock';
 import { SwapiService } from 'src/app/services/swapi/swapi.service';
@@ -13,7 +14,7 @@ describe('CharacterListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CharacterListComponent],
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule],
     }).compileComponents();
   });
 
@@ -41,14 +42,14 @@ describe('CharacterListComponent', () => {
 
   describe('getCharacters', () => {
     it('Should get characters lists', () => {
-      spyOn(swapiService, 'getPeopleList').and.returnValue(of(dataMock));
+      spyOn(swapiService, 'getCharacterList').and.returnValue(of(dataMock));
       component.getCharacters(1);
       expect(component.characters).toEqual(dataMock.results);
     });
 
     it('Should call getcharacters and return error', () => {
       spyOn(console, 'error');
-      spyOn(swapiService, 'getPeopleList').and.returnValue(
+      spyOn(swapiService, 'getCharacterList').and.returnValue(
         throwError(() => {
           error: 'error';
         })

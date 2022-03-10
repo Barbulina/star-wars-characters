@@ -16,9 +16,17 @@
   </ul>
 </ng-template>
 
-<nav>
+<!-- <nav>
   <button (click)="navigateToPage(previous)" [disabled]="!previous">
     prev
   </button>
   <button (click)="navigateToPage(next)" [disabled]="!next">next</button>
-</nav>
+</nav> -->
+<ng-container *ngIf="!isLoading">
+  <app-pagination
+    (selectPage)="getCharacters($event)"
+    [count]="count"
+    [currentPage]="currentPage"
+    [pageSize]="pageSize"
+  ></app-pagination>
+</ng-container>

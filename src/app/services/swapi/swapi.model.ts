@@ -6,6 +6,7 @@ export interface SwapiResponseObject {
 }
 
 export interface Character {
+  id?: any;
   name: string;
   height: string;
   mass: string;

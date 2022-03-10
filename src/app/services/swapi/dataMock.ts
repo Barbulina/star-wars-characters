@@ -4,6 +4,7 @@ export const dataMock = {
   previous: null,
   results: [
     {
+      id: 1,
       name: 'Luke Skywalker',
       height: '172',
       mass: '77',

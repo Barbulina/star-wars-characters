@@ -25,7 +25,7 @@ describe('SwapiService', () => {
     const mockPage = 2;
     const expectedUrl = `${environment.apiUrl}people/?page=${mockPage}`;
     spyOn(http, 'get');
-    service.getPeopleList(mockPage);
+    service.getCharacterList(mockPage);
     expect(http.get).toHaveBeenCalledWith(expectedUrl);
   });
 
@@ -33,7 +33,7 @@ describe('SwapiService', () => {
     const mockPage = undefined;
     const expectedUrl = `${environment.apiUrl}people/?page=1`;
     spyOn(http, 'get');
-    service.getPeopleList(mockPage);
+    service.getCharacterList(mockPage);
     expect(http.get).toHaveBeenCalledWith(expectedUrl);
   });
 });

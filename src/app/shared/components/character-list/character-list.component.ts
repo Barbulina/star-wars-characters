@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import {
   Character,
@@ -22,7 +23,7 @@ export class CharacterListComponent implements OnInit, OnDestroy {
   subscriptions = new Subscription();
   pageSize: number = RESULTS_PER_PAGE;
 
-  constructor(private swapiService: SwapiService) {}
+  constructor(private swapiService: SwapiService, private router: Router) {}
 
   ngOnInit(): void {
     this.getCharacters(this.currentPage);
@@ -31,7 +32,7 @@ export class CharacterListComponent implements OnInit, OnDestroy {
   getCharacters(page: number): void {
     this.isLoading = true;
     this.subscriptions.add(
-      this.swapiService.getPeopleList(page).subscribe({
+      this.swapiService.getCharacterList(page).subscribe({
         next: (data: SwapiResponseObject) => {
           this.currentPage = page;
           this.count = data.count;
@@ -49,8 +50,8 @@ export class CharacterListComponent implements OnInit, OnDestroy {
   }
 
   selectCharacter(character: Character): void {
-    // TODO go to the detail page
-    console.log('char selected', character);
+    this.swapiService.setCharacterCache(character);
+    this.router.navigate(['/character', character.id]);
   }
 
   navigateToPage(url: string | undefined): void {

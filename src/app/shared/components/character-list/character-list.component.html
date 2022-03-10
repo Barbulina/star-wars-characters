@@ -1,0 +1,24 @@
+<h3>character list</h3>
+<h4>Total characters {{ count }}</h4>
+<ng-container *ngIf="isLoading; else characterList">
+  <div role="status">
+    <span>Loading...</span>
+  </div>
+</ng-container>
+<ng-template #characterList>
+  <ul>
+    <li
+      *ngFor="let character of characters"
+      (click)="selectCharacter(character)"
+    >
+      {{ character.name }}
+    </li>
+  </ul>
+</ng-template>
+
+<nav>
+  <button (click)="navigateToPage(previous)" [disabled]="!previous">
+    prev
+  </button>
+  <button (click)="navigateToPage(next)" [disabled]="!next">next</button>
+</nav>

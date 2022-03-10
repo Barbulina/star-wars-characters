@@ -103,9 +103,21 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "star-wars-characters"
+  "defaultProject": "star-wars-characters",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }

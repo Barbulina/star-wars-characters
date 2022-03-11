@@ -4,24 +4,21 @@
     <h3>count {{ count }}</h3>
   </header>
   <div class="list__content">
-    <ng-container *ngIf="isLoading; else characterList">
-      <div role="status" class="list__spinner">
-        <mat-spinner></mat-spinner>
-      </div>
-    </ng-container>
-    <ng-template #characterList>
-      <div class="list__table">
-        <ul>
-          <li
-            *ngFor="let character of characters"
-            (click)="selectCharacter(character)"
-          >
-            {{ character.name }}
-          </li>
-        </ul>
-      </div>
-    </ng-template>
-    <div class="list__pagination" *ngIf="!isLoading">
+    <div class="list__content">
+      <ng-container *ngIf="isLoading; else characterList">
+        <div role="status" class="list__spinner">
+          <mat-spinner></mat-spinner>
+        </div>
+      </ng-container>
+      <ng-template #characterList>
+        <app-table
+          [columns]="columnsDef"
+          (selectRow)="selectCharacter($event)"
+          [data]="characters"
+        ></app-table>
+      </ng-template>
+    </div>
+    <div class="list__pagination" *ngIf="count">
       <app-pagination
         (selectPage)="getCharacters($event)"
         [count]="count"

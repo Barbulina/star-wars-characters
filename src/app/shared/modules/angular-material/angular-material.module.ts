@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
+
 const ANGULAR_MATERIAL_MODULES: any = [
   MatToolbarModule,
   MatProgressSpinnerModule,
-  MatCardModule,
+  MatPaginatorModule,
+  MatButtonModule,
 ];
 
 @NgModule({

@@ -9,6 +9,10 @@ import { CharacterListComponent } from './shared/components/character-list/chara
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 import { PaginationComponent } from './shared/components/pagination/pagination.component';
 import { AngularMaterialModule } from './shared/modules/angular-material/angular-material.module';
+import { TableComponent } from './shared/components/table/table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -17,6 +21,7 @@ import { AngularMaterialModule } from './shared/modules/angular-material/angular
     PageNotFoundComponent,
     PaginationComponent,
     CharacterDetailComponent,
+    TableComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,6 +29,9 @@ import { AngularMaterialModule } from './shared/modules/angular-material/angular
     HttpClientModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

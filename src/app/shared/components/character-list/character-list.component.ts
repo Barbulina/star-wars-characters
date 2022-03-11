@@ -23,6 +23,29 @@ export class CharacterListComponent implements OnInit, OnDestroy {
   subscriptions = new Subscription();
   pageSize: number = RESULTS_PER_PAGE;
 
+  columnsDef = [
+    {
+      columnDef: 'name',
+      header: 'Name',
+      cell: (element: Character) => `${element.name}`,
+    },
+    {
+      columnDef: 'gender',
+      header: 'Gender',
+      cell: (element: Character) => `${element.gender}`,
+    },
+    {
+      columnDef: 'height',
+      header: 'Height (cm)',
+      cell: (element: Character) => `${element.height}`,
+    },
+    {
+      columnDef: 'mass',
+      header: 'Mass (Kg)',
+      cell: (element: Character) => `${element.mass}`,
+    },
+  ];
+
   constructor(private swapiService: SwapiService, private router: Router) {}
 
   ngOnInit(): void {

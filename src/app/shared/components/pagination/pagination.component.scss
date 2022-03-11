@@ -1,0 +1,8 @@
+$content-padding: 12px;
+$button-margin: 4px;
+.pagination {
+  padding: $content-padding;
+  &__button {
+    margin: 0 $button-margin;
+  }
+}

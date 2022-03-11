@@ -1,8 +1,10 @@
-<nav>
+<nav class="pagination">
   <button
+    class="pagination__button"
+    mat-mini-fab
     (click)="onSelectPage(page)"
     *ngFor="let page of pages"
-    [disabled]="page === currentPage"
+    [color]="page === currentPage ? 'primary' : 'link'"
   >
     {{ page }}
   </button>

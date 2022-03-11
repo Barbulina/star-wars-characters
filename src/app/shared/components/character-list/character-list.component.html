@@ -1,32 +1,33 @@
-<h3>character list</h3>
-<h4>Total characters {{ count }}</h4>
-<ng-container *ngIf="isLoading; else characterList">
-  <div role="status">
-    <span>Loading...</span>
+<div class="list">
+  <header class="list__header">
+    <h2>character list</h2>
+    <h3>count {{ count }}</h3>
+  </header>
+  <div class="list__content">
+    <ng-container *ngIf="isLoading; else characterList">
+      <div role="status" class="list__spinner">
+        <mat-spinner></mat-spinner>
+      </div>
+    </ng-container>
+    <ng-template #characterList>
+      <div class="list__table">
+        <ul>
+          <li
+            *ngFor="let character of characters"
+            (click)="selectCharacter(character)"
+          >
+            {{ character.name }}
+          </li>
+        </ul>
+      </div>
+    </ng-template>
+    <div class="list__pagination" *ngIf="!isLoading">
+      <app-pagination
+        (selectPage)="getCharacters($event)"
+        [count]="count"
+        [currentPage]="currentPage"
+        [pageSize]="pageSize"
+      ></app-pagination>
+    </div>
   </div>
-</ng-container>
-<ng-template #characterList>
-  <ul>
-    <li
-      *ngFor="let character of characters"
-      (click)="selectCharacter(character)"
-    >
-      {{ character.name }}
-    </li>
-  </ul>
-</ng-template>
-
-<!-- <nav>
-  <button (click)="navigateToPage(previous)" [disabled]="!previous">
-    prev
-  </button>
-  <button (click)="navigateToPage(next)" [disabled]="!next">next</button>
-</nav> -->
-<ng-container *ngIf="!isLoading">
-  <app-pagination
-    (selectPage)="getCharacters($event)"
-    [count]="count"
-    [currentPage]="currentPage"
-    [pageSize]="pageSize"
-  ></app-pagination>
-</ng-container>
+</div>

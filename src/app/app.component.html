@@ -1,2 +1,10 @@
-<h1>{{ title }}</h1>
-<router-outlet></router-outlet>
+<div class="app">
+  <mat-toolbar color="primary">
+    <span class="app__title">{{ title }}</span>
+  </mat-toolbar>
+  <section class="app__content">
+    <mat-card class="app__card">
+      <router-outlet></router-outlet>
+    </mat-card>
+  </section>
+</div>

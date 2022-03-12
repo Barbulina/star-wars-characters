@@ -1,0 +1,14 @@
+$header-height: 56px;
+$row-height: 48px;
+$row-number: 10;
+
+.table {
+  min-height: calc($header-height + $row-height * $row-number);
+  &__content {
+    width: 100%;
+  }
+
+  &__row {
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,24 @@
+.details {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &__properties {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  &__property {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-right: 1rem;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

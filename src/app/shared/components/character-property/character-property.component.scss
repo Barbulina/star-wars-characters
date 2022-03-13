@@ -1,0 +1,8 @@
+.property {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  &__label {
+    text-transform: capitalize;
+  }
+}

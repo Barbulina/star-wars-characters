@@ -13,6 +13,7 @@ import { TableComponent } from './shared/components/table/table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { CharacterPropertyComponent } from './shared/components/character-property/character-property.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { MatSortModule } from '@angular/material/sort';
     PaginationComponent,
     CharacterDetailComponent,
     TableComponent,
+    CharacterPropertyComponent,
   ],
   imports: [
     BrowserModule,

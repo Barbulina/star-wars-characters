@@ -1,6 +1,46 @@
-<a (click)="goBack()">back</a>
-<h2>{{ character?.name }}</h2>
-<h4>films</h4>
-<ul>
-  <li *ngFor="let film of character?.films">{{ film }}</li>
-</ul>
+<div class="details">
+  <h2 class="details__header">
+    <button (click)="goBack()" mat-icon-button aria-label="back button">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
+    {{ character?.name }}
+  </h2>
+  <mat-card>
+    <section class="details__properties">
+      <app-character-property
+        class="details__property"
+        [property]="{ label: 'height', value: character?.height }"
+      ></app-character-property>
+      <app-character-property
+        class="details__property"
+        [property]="{ label: 'mass', value: character?.mass }"
+      ></app-character-property>
+      <app-character-property
+        class="details__property"
+        [property]="{ label: 'hair color', value: character?.hair_color }"
+      ></app-character-property>
+      <app-character-property
+        class="details__property"
+        [property]="{ label: 'skin color', value: character?.skin_color }"
+      ></app-character-property>
+      <app-character-property
+        class="details__property"
+        [property]="{ label: 'eye color', value: character?.eye_color }"
+      ></app-character-property>
+      <app-character-property
+        class="details__property"
+        [property]="{ label: 'birth year', value: character?.birth_year }"
+      ></app-character-property>
+      <app-character-property
+        class="details__property"
+        [property]="{ label: 'gender', value: character?.gender }"
+      ></app-character-property>
+    </section>
+    <section class="details__films">
+      <h3>films</h3>
+      <ul>
+        <li *ngFor="let film of character?.films">{{ film }}</li>
+      </ul>
+    </section>
+  </mat-card>
+</div>

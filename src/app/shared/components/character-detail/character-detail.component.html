@@ -36,11 +36,18 @@
         [property]="{ label: 'gender', value: character?.gender }"
       ></app-character-property>
     </section>
-    <section class="details__films">
-      <h3>films</h3>
-      <ul>
-        <li *ngFor="let film of character?.films">{{ film }}</li>
-      </ul>
-    </section>
   </mat-card>
+  <section class="details__films">
+    <h2>films</h2>
+    <div class="details__films-spinner" *ngIf="isFilmsLoading; else filmsList">
+      <mat-spinner></mat-spinner>
+    </div>
+    <ng-template #filmsList>
+      <div class="details__films-list">
+        <ng-container *ngFor="let film of films">
+          <app-film [film]="film"></app-film>
+        </ng-container>
+      </div>
+    </ng-template>
+  </section>
 </div>

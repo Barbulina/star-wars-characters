@@ -1,7 +1,8 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Character } from 'src/app/services/swapi/swapi.model';
+import { combineLatest, Subscription } from 'rxjs';
+import { Character, Film } from 'src/app/services/swapi/swapi.model';
 import { SwapiService } from 'src/app/services/swapi/swapi.service';
 
 @Component({
@@ -11,6 +12,9 @@ import { SwapiService } from 'src/app/services/swapi/swapi.service';
 })
 export class CharacterDetailComponent implements OnInit {
   character: Character | undefined = undefined;
+  subscriptions: Subscription = new Subscription();
+  films: Film[] = [];
+  isFilmsLoading: boolean = false;
   constructor(
     private swaService: SwapiService,
     private route: ActivatedRoute,
@@ -21,7 +25,7 @@ export class CharacterDetailComponent implements OnInit {
     this.getCharacter();
   }
 
-  goBack() {
+  goBack(): void {
     this.location.back();
   }
 
@@ -29,17 +33,36 @@ export class CharacterDetailComponent implements OnInit {
     const characterInCache = this.swaService.getCharacterFromCache();
     if (characterInCache && characterInCache.id === this.getIdFromParams()) {
       this.character = this.swaService.getCharacterFromCache();
+      const characterFilms = this.character?.films;
+      this.getFilmsById(characterFilms);
     } else {
       this.getCharacterFromAPI();
     }
   }
 
-  private getCharacterFromAPI() {
+  private getFilmsById(films: string[] | undefined): void {
+    if (!films || films.length === 0) return;
+    const filmsSub: any = [];
+    films.forEach((film) => {
+      filmsSub.push(
+        this.swaService.getFilmById(Number(film.split('/').slice(-2)[0]))
+      );
+    });
+    this.subscriptions.add(
+      combineLatest(filmsSub).subscribe((films: any) => (this.films = films))
+    );
+  }
+
+  private getCharacterFromAPI(): void {
+    this.isFilmsLoading = true;
     this.swaService
       .getCharacterById(this.getIdFromParams())
       .subscribe((character: Character) => {
         this.swaService.setCharacterCache(character);
         this.character = character;
+        const characterFilms = this.character?.films;
+        this.getFilmsById(characterFilms);
+        this.isFilmsLoading = false;
       });
   }
 

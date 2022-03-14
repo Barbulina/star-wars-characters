@@ -14,6 +14,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { CharacterPropertyComponent } from './shared/components/character-property/character-property.component';
+import { FilmComponent } from './shared/components/film/film.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { CharacterPropertyComponent } from './shared/components/character-proper
     CharacterDetailComponent,
     TableComponent,
     CharacterPropertyComponent,
+    FilmComponent,
   ],
   imports: [
     BrowserModule,

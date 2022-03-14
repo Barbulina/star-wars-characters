@@ -1,3 +1,4 @@
+$section-spacing: 1.5rem;
 .details {
   &__header {
     display: flex;
@@ -20,5 +21,22 @@
     &:last-child {
       margin-right: 0;
     }
+  }
+
+  &__films {
+    margin-top: $section-spacing;
+  }
+
+  &__films-spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__films-list {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
   }
 }

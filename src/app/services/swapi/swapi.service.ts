@@ -3,6 +3,12 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Character, SwapiResponseObject } from './swapi.model';
+
+enum SwapiResource {
+  people = 'people',
+  films = 'films',
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -11,14 +17,14 @@ export class SwapiService {
   constructor(private http: HttpClient) {}
 
   getCharacterList(page: number = 1): Observable<SwapiResponseObject> {
-    const url = `${environment.apiUrl}people/?page=${page}`;
+    const url = `${environment.apiUrl}${SwapiResource.people}/?page=${page}`;
     return this.http
       .get(url)
       ?.pipe(map((res: any) => this.parsePeopleResult(res)));
   }
 
   getCharacterById(id: number): Observable<Character> {
-    const url = `${environment.apiUrl}people/${id}`;
+    const url = `${environment.apiUrl}${SwapiResource.people}/${id}`;
     return this.http.get(url).pipe(map((res: any) => this.parseCharacter(res)));
   }
 
@@ -29,6 +35,11 @@ export class SwapiService {
   setCharacterCache(character: Character): void {
     if (!character) return;
     this.characterChache = character;
+  }
+
+  getFilmById(id: number): Observable<any> {
+    const url = `${environment.apiUrl}${SwapiResource.films}/${id}`;
+    return this.http.get(url);
   }
 
   private parsePeopleResult(res: SwapiResponseObject): SwapiResponseObject {

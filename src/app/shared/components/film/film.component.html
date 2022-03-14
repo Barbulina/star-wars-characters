@@ -1,0 +1,15 @@
+<div class="film">
+  <mat-card class="film__card" color="accent">
+    <mat-card-header>
+      <mat-card-title class="film__title">{{ film?.title }}</mat-card-title>
+    </mat-card-header>
+    <img
+      mat-card-image
+      src="assets/images/films/{{ film?.episode_id }}.webp"
+      [alt]="film?.title"
+    />
+    <mat-card-content>
+      <p>{{ film?.opening_crawl }}</p>
+    </mat-card-content>
+  </mat-card>
+</div>

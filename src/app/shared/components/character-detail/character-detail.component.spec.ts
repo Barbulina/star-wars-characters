@@ -6,11 +6,15 @@ import {
   TestBed,
   tick,
 } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { dataMock } from 'src/app/services/swapi/dataMock';
 import { SwapiService } from 'src/app/services/swapi/swapi.service';
+import { AngularMaterialModule } from '../../modules/angular-material/angular-material.module';
+import { CharacterPropertyComponent } from '../character-property/character-property.component';
+import { FilmComponent } from '../film/film.component';
 import { CharacterDetailComponent } from './character-detail.component';
 
 describe('CharacterDetailComponent', () => {
@@ -22,8 +26,17 @@ describe('CharacterDetailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CharacterDetailComponent],
-      imports: [RouterTestingModule, HttpClientTestingModule],
+      declarations: [
+        CharacterDetailComponent,
+        FilmComponent,
+        CharacterPropertyComponent,
+      ],
+      imports: [
+        BrowserAnimationsModule,
+        RouterTestingModule,
+        HttpClientTestingModule,
+        AngularMaterialModule,
+      ],
     }).compileComponents();
   });
 

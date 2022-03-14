@@ -4,6 +4,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { of, throwError } from 'rxjs';
 import { dataMock } from 'src/app/services/swapi/dataMock';
 import { SwapiService } from 'src/app/services/swapi/swapi.service';
+import { AngularMaterialModule } from '../../modules/angular-material/angular-material.module';
+import { PaginationComponent } from '../pagination/pagination.component';
 import { CharacterListComponent } from './character-list.component';
 
 describe('CharacterListComponent', () => {
@@ -13,8 +15,12 @@ describe('CharacterListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CharacterListComponent],
-      imports: [HttpClientTestingModule, RouterTestingModule],
+      declarations: [CharacterListComponent, PaginationComponent],
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule,
+        AngularMaterialModule,
+      ],
     }).compileComponents();
   });
 
@@ -64,12 +70,6 @@ describe('CharacterListComponent', () => {
       spyOn(component, 'getCharacters');
       component.navigateToPage('url/?page=2');
       expect(component.getCharacters).toHaveBeenCalledWith(2);
-    });
-  });
-
-  describe('selectCharacter', () => {
-    it('Should navigate to character detail', () => {
-      //
     });
   });
 

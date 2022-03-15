@@ -14,6 +14,8 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
 
+Web project: (https://barbulina.github.io/star-wars-characters/character-list)
+
 ### Screenshot
 
 ![Image text](https://user-images.githubusercontent.com/7737848/158343684-5dbb82c4-54d9-4e23-8f97-ca2a22458b70.png)

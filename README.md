@@ -35,7 +35,7 @@ In CSS use BEM Methodology (<https://en.bem.info/methodology/>).
 A little intro about the installation.
 
 ```bash
-git clone https://example.com
+git clone https://github.com/Barbulina/star-wars-characters.git
 cd ../path/to/the/file
 npm install
 npm start

@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { combineLatest, Subscription } from 'rxjs';
 import { Character, Film } from 'src/app/services/swapi/swapi.model';
@@ -10,7 +10,7 @@ import { SwapiService } from 'src/app/services/swapi/swapi.service';
   templateUrl: './character-detail.component.html',
   styleUrls: ['./character-detail.component.scss'],
 })
-export class CharacterDetailComponent implements OnInit {
+export class CharacterDetailComponent implements OnInit, OnDestroy {
   character: Character | undefined = undefined;
   subscriptions: Subscription = new Subscription();
   films: Film[] = [];
@@ -55,18 +55,24 @@ export class CharacterDetailComponent implements OnInit {
 
   private getCharacterFromAPI(): void {
     this.isFilmsLoading = true;
-    this.swaService
-      .getCharacterById(this.getIdFromParams())
-      .subscribe((character: Character) => {
-        this.swaService.setCharacterCache(character);
-        this.character = character;
-        const characterFilms = this.character?.films;
-        this.getFilmsById(characterFilms);
-        this.isFilmsLoading = false;
-      });
+    this.subscriptions.add(
+      this.swaService
+        .getCharacterById(this.getIdFromParams())
+        .subscribe((character: Character) => {
+          this.swaService.setCharacterCache(character);
+          this.character = character;
+          const characterFilms = this.character?.films;
+          this.getFilmsById(characterFilms);
+          this.isFilmsLoading = false;
+        })
+    );
   }
 
   private getIdFromParams(): number {
     return Number(this.route.snapshot.params['id']);
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 }

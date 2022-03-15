@@ -1,27 +1,42 @@
 # StarWarsCharacters
 
+## Table of Contents
+
+- [StarWarsCharacters](#starwarscharacters)
+  - [Table of Contents](#table-of-contents)
+    - [General Info](#general-info)
+    - [Screenshot](#screenshot)
+  - [Technologies](#technologies)
+  - [Installation](#installation)
+
+
+### General Info
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
 
-## Development server
+### Screenshot
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+![Image text](https://user-images.githubusercontent.com/7737848/158343684-5dbb82c4-54d9-4e23-8f97-ca2a22458b70.png)
+![Image text](https://user-images.githubusercontent.com/7737848/158343808-924438e6-380e-44c2-82d9-66dd7611c0d7.png)
 
-## Code scaffolding
+## Technologies
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+A list of technologies used within the project:
 
-## Build
+* [Angular](https://angular.io/): Version 13.2
+* [Angular Material](https://material.angular.io/): Version 13.2
+* [SWAPI](swapi.dev)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+This repository use Husky + Eslint + Prettier for precommits and prepush.
+In CSS use BEM Methodology (<https://en.bem.info/methodology/>).
 
-## Running unit tests
+## Installation
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+A little intro about the installation.
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+git clone https://example.com
+cd ../path/to/the/file
+npm install
+npm start
+```
